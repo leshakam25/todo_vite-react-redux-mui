@@ -1,7 +1,7 @@
 import { TextField, Button, Box } from "@mui/material";
 import React from "react";
 
-const TodoForm = ({ date, text, handleSubmit, setText, setDate }) => {
+const TodoForm = ({ date, text, handleSubmit }) => {
   return (
     <Box
       sx={{

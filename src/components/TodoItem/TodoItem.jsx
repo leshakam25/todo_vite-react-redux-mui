@@ -6,14 +6,14 @@ import Checkbox from "@mui/material/Checkbox";
 import IconButton from "@mui/material/IconButton";
 import BackspaceIcon from "@mui/icons-material/Backspace";
 
-const TodoItem = ({ id, text, date, checked, handleToggle, removeTodo }) => {
+const TodoItem = ({ el, handleToggle }) => {
   return (
     <ListItem
       secondaryAction={
         <IconButton
           edge="end"
           aria-label="comments"
-          onClick={() => removeTodo(id)}
+          onClick={() => removeTodo(el.id)}
         >
           <BackspaceIcon
             sx={{
@@ -31,15 +31,15 @@ const TodoItem = ({ id, text, date, checked, handleToggle, removeTodo }) => {
           alignItems: "center",
         }}
         role={undefined}
-        onClick={handleToggle(id)}
+        onClick={handleToggle(el.id)}
         dense
       >
         <Checkbox
           edge="start"
-          checked={checked.indexOf(id) !== -1}
+          checked={checked.indexOf(el.id) !== -1}
           tabIndex={-1}
           disableRipple
-          inputProps={{ "aria-labelledby": id }}
+          inputProps={{ "aria-labelledby": el.id }}
         />
         <ListItemText primary={date} />
         <ListItemText primary={text} />

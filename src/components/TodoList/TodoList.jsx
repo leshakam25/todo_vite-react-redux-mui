@@ -1,8 +1,11 @@
 import React from "react";
 import List from "@mui/material/List";
 import TodoItem from "../TodoItem/TodoItem";
+import { useSelector } from "react-redux";
 
-export default function TodoList({ todos, checked, removeTodo, handleToggle }) {
+export default function TodoList({ handleToggle, removeTodo }) {
+  const todos = useSelector((state) => state.todos.todos);
+
   return (
     <List
       sx={{ mt: 2, width: "100%", maxWidth: 420, bgcolor: "background.paper" }}
@@ -11,10 +14,9 @@ export default function TodoList({ todos, checked, removeTodo, handleToggle }) {
         todos.map((el) => {
           return (
             <TodoItem
-              key={el.id}
               handleToggle={handleToggle}
               removeTodo={removeTodo}
-              checked={checked}
+              key={el.id}
               {...el}
             />
           );

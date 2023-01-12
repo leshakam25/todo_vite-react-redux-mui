@@ -1,7 +1,7 @@
 import { TextField, Button, Box } from "@mui/material";
-import React, { useState } from "react";
+import React from "react";
 
-const TodoForm = ({ date, text, addTodo, setText, setDate }) => {
+const TodoForm = ({ date, text, handleSubmit, setText, setDate }) => {
   return (
     <Box
       sx={{
@@ -30,7 +30,7 @@ const TodoForm = ({ date, text, addTodo, setText, setDate }) => {
         size="small"
         placeholder="Введите дело"
       />
-      <Button fullWidth variant="outlined" onClick={addTodo}>
+      <Button fullWidth variant="outlined" onClick={handleSubmit}>
         Добавить
       </Button>
     </Box>

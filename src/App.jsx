@@ -53,7 +53,6 @@ function App() {
 
   return (
     <>
-      {" "}
       <Container maxWidth={false}>
         <TodoForm
           todos={todos}
@@ -61,7 +60,7 @@ function App() {
           text={text}
           setText={setText}
           setDate={setDate}
-          addTodo={addTodo}
+          handleSubmit={addTodo}
         />
         <TodoList
           todos={todos}

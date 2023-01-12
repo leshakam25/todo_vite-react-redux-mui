@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -10,33 +10,23 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
-import AddTodoModal from "../AddTodoModal/AddTodoModal";
-import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
-import { CardMedia } from "@mui/material";
+import TodoModalButton from "../TodoModalButton/TodoModalButton";
 
 const pages = [
-  <AddTodoModal />,
+  <TodoModalButton />,
   <Button sx={{ color: "white" }}>Список дел</Button>,
   <Button sx={{ color: "white" }}>Архив дел</Button>,
 ];
 
 function Header() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
   };
 
   return (

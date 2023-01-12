@@ -1,10 +1,10 @@
 import { Modal, Button, Box, Typography } from "@mui/material";
 import React from "react";
-import AddTodoForm from "../AddTodoForm/AddTodoForm";
+import TodoForm from "../TodoForm/TodoForm";
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 import CloseIcon from "@mui/icons-material/Close";
 
-export default function AddTodoModal() {
+export default function TodoModalButton() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -48,7 +48,7 @@ export default function AddTodoModal() {
             borderRadius: "8px",
           }}
         >
-          <AddTodoForm />
+          <TodoForm />
           <Button
             onClick={handleClose}
             sx={{ position: "absolute", right: -14, top: 0 }}

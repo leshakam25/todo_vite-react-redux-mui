@@ -1,4 +1,13 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+
+export const fetchTodos = createAsyncThunk(
+  "todos/fetchTodos",
+  async function () {
+    const response = await fetch("http://localhost:3100/todos");
+    const data = await response.json();
+    return data;
+  }
+);
 
 const todoSlice = createSlice({
   name: "todos",
@@ -8,11 +17,11 @@ const todoSlice = createSlice({
       { id: 1, text: "it it", date: "33.22.2022", completed: false },
       { id: 2, text: "do do", date: "44.11.2022", completed: false },
     ],
+    status: null,
+    error: null,
   },
   reducers: {
     addTodo(state, action) {
-      console.log(state);
-      console.log(action);
       state.todos.push({
         id: new Date().toISOString(),
         date: action.payload.date,
@@ -29,6 +38,11 @@ const todoSlice = createSlice({
       );
       toggledTodo.completed = !toggledTodo.completed;
     },
+  },
+  extraReducers: {
+    [fetchTodos.pending]: (state, action) => {},
+    [fetchTodos.fulfilled]: (state, action) => {},
+    [fetchTodos.rejected]: (state, action) => {},
   },
 });
 export const { addTodo, removeTodo, toggleTodoCompleted } = todoSlice.actions;

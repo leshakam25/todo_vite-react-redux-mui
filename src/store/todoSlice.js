@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { useState } from "react";
 
 const todoSlice = createSlice({
   name: "todos",
@@ -16,26 +15,21 @@ const todoSlice = createSlice({
       console.log(action);
       state.todos.push({
         id: new Date().toISOString(),
-        date: action.payload,
-        text: action.payload,
+        date: action.payload.date,
+        text: action.payload.text,
         completed: false,
       });
     },
     removeTodo(state, action) {
-      setTodos(todos.filter((todo) => todo.id !== todoId));
+      state.todos = state.todos.filter((todo) => todo.id !== action.payload.id);
     },
-    handleToggle(state, action) {
-      const [checked, setChecked] = useState([0]);
-      const currentIndex = checked.indexOf(todoId);
-      const newChecked = [...checked];
-      if (currentIndex === -1) {
-        newChecked.push(todoId);
-      } else {
-        newChecked.splice(currentIndex, 1);
-      }
-      setChecked(newChecked);
+    toggleTodoCompleted(state, action) {
+      const toggledTodo = state.todos.find(
+        (todo) => todo.id === action.payload.id
+      );
+      toggledTodo.completed = !toggledTodo.completed;
     },
   },
 });
-export const { addTodo, removeTodo, handleToggle } = todoSlice.actions;
+export const { addTodo, removeTodo, toggleTodoCompleted } = todoSlice.actions;
 export default todoSlice.reducer;

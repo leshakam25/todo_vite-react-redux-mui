@@ -1,13 +1,25 @@
+import React, { useState } from "react";
 import { TextField, Button, Box } from "@mui/material";
-import React from "react";
+import { useDispatch } from "react-redux";
+import { addTodo } from "../../store/todoSlice";
 
-const TodoForm = ({ date, text, handleSubmit }) => {
+const TodoForm = () => {
+  const [date, setDate] = useState("");
+  const [text, setText] = useState("");
+
+  const dispatch = useDispatch();
+  const addTask = () => {
+    dispatch(addTodo({ date, text }));
+    setText("");
+    setDate("");
+  };
   return (
     <Box
       sx={{
         display: "flex",
         flexDirection: "column",
         gap: 1,
+        maxWidth: "600px",
       }}
     >
       <TextField
@@ -30,7 +42,7 @@ const TodoForm = ({ date, text, handleSubmit }) => {
         size="small"
         placeholder="Введите дело"
       />
-      <Button fullWidth variant="outlined" onClick={handleSubmit}>
+      <Button fullWidth variant="outlined" onClick={addTask}>
         Добавить
       </Button>
     </Box>

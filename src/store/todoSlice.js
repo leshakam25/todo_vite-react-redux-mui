@@ -4,9 +4,9 @@ const todoSlice = createSlice({
   name: "todos",
   initialState: {
     todos: [
-      { id: 0, text: "do it", date: "21.12.2022" },
-      { id: 1, text: "it it", date: "33.22.2022" },
-      { id: 2, text: "do do", date: "44.11.2022" },
+      { id: 0, text: "do it", date: "21.12.2022", completed: true },
+      { id: 1, text: "it it", date: "33.22.2022", completed: false },
+      { id: 2, text: "do do", date: "44.11.2022", completed: false },
     ],
   },
   reducers: {

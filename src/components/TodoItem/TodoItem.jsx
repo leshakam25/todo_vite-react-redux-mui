@@ -8,11 +8,14 @@ import BackspaceIcon from "@mui/icons-material/Backspace";
 import { useDispatch } from "react-redux";
 import { removeTodo, toggleTodoCompleted } from "../../store/todoSlice";
 
-const TodoItem = ({ id, date, text, completed }) => {
+const TodoItem = ({ id, date, text, completed, todo }) => {
   const dispatch = useDispatch();
 
   return (
     <ListItem
+      sx={{
+        maxWidth: "600px",
+      }}
       secondaryAction={
         <IconButton edge="end" onClick={() => dispatch(removeTodo({ id }))}>
           <BackspaceIcon
@@ -26,15 +29,10 @@ const TodoItem = ({ id, date, text, completed }) => {
     >
       <ListItemButton
         role={undefined}
-        onClick={() => toggleTodoCompleted(id)}
+        onClick={() => dispatch(toggleTodoCompleted({ id }))}
         dense
       >
-        <Checkbox
-          edge="start"
-          checked={completed}
-          tabIndex={-1}
-          disableRipple
-        />
+        <Checkbox edge="start" checked={completed} />
         <ListItemText primary={date} />
         <ListItemText primary={text} />
       </ListItemButton>

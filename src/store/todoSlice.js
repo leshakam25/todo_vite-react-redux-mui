@@ -4,7 +4,7 @@ export const fetchTodos = createAsyncThunk(
   "todos/fetchTodos",
   async function (_, { rejectWithValue }) {
     try {
-      const response = await fetch("http://lgocalhost:3100/todos");
+      const response = await fetch("http://localhost:3100/todos");
       if (!response.ok) {
         throw new Error("Ошибка");
       }

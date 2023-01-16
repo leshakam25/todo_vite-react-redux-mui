@@ -1,10 +1,10 @@
 import { CardMedia, Container, Grid, Typography } from "@mui/material";
 import React, { useEffect } from "react";
-import TodoForm from "./components/TodoForm/TodoForm";
-import TodoList from "./components/TodoList/TodoList";
+import TodoForm from "./components/Todos/TodoForm/TodoForm";
+import TodoList from "./components/Todos/TodoList/TodoList";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTodos } from "./store/todoSlice";
-import TodoModalButton from "./components/TodoModalButton/TodoModalButton";
+import TodoModalButton from "./components/Todos/TodoModalButton/TodoModalButton";
 import duck from "./images/duck.gif";
 import errorGif from "./images/errorGif.gif";
 import { Box } from "@mui/system";

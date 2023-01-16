@@ -30,6 +30,7 @@ const todoSlice = createSlice({
         date: action.payload.date,
         text: action.payload.text,
         completed: false,
+        archieved: false,
       });
     },
     removeTodo(state, action) {
@@ -40,6 +41,12 @@ const todoSlice = createSlice({
         (todo) => todo.id === action.payload.id
       );
       toggledTodo.completed = !toggledTodo.completed;
+    },
+    toggleTodoArchieved(state, action) {
+      const toggledTodo = state.todos.find(
+        (todo) => todo.id === action.payload.id
+      );
+      toggledTodo.archieved = !toggledTodo.archieved;
     },
   },
   extraReducers: {
@@ -58,5 +65,6 @@ const todoSlice = createSlice({
     },
   },
 });
-export const { addTodo, removeTodo, toggleTodoCompleted } = todoSlice.actions;
+export const { addTodo, removeTodo, toggleTodoCompleted, toggleTodoArchieved } =
+  todoSlice.actions;
 export default todoSlice.reducer;

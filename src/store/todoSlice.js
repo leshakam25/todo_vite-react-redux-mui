@@ -2,21 +2,24 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchTodos = createAsyncThunk(
   "todos/fetchTodos",
-  async function () {
-    const response = await fetch("http://localhost:3100/todos");
-    const data = await response.json();
-    return data;
+  async function (_, { rejectWithValue }) {
+    try {
+      const response = await fetch("http://lgocalhost:3100/todos");
+      if (!response.ok) {
+        throw new Error("Ошибка");
+      }
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
   }
 );
 
 const todoSlice = createSlice({
   name: "todos",
   initialState: {
-    todos: [
-      { id: 0, text: "do it", date: "21.12.2022", completed: true },
-      { id: 1, text: "it it", date: "33.22.2022", completed: false },
-      { id: 2, text: "do do", date: "44.11.2022", completed: false },
-    ],
+    todos: [],
     status: null,
     error: null,
   },
@@ -40,9 +43,19 @@ const todoSlice = createSlice({
     },
   },
   extraReducers: {
-    [fetchTodos.pending]: (state, action) => {},
-    [fetchTodos.fulfilled]: (state, action) => {},
-    [fetchTodos.rejected]: (state, action) => {},
+    [fetchTodos.pending]: (state) => {
+      state.status = "loading";
+      state.error = null;
+    },
+    [fetchTodos.fulfilled]: (state, action) => {
+      state.status = "resolved";
+      state.todos = action.payload;
+    },
+
+    [fetchTodos.rejected]: (state, action) => {
+      state.status = "rejected";
+      state.error = action.payload;
+    },
   },
 });
 export const { addTodo, removeTodo, toggleTodoCompleted } = todoSlice.actions;

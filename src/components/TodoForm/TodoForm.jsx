@@ -9,9 +9,11 @@ const TodoForm = () => {
 
   const dispatch = useDispatch();
   const addTask = () => {
-    dispatch(addTodo({ date, text }));
-    setText("");
-    setDate("");
+    if (date && text) {
+      dispatch(addTodo({ date, text }));
+      setText("");
+      setDate("");
+    }
   };
   return (
     <Box
@@ -19,7 +21,6 @@ const TodoForm = () => {
         display: "flex",
         flexDirection: "column",
         gap: 1,
-        maxWidth: "600px",
       }}
     >
       <TextField
@@ -42,7 +43,7 @@ const TodoForm = () => {
         size="small"
         placeholder="Введите дело"
       />
-      <Button fullWidth variant="outlined" onClick={addTask}>
+      <Button disabled={!text} fullWidth variant="outlined" onClick={addTask}>
         Добавить
       </Button>
     </Box>

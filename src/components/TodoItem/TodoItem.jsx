@@ -7,15 +7,14 @@ import IconButton from "@mui/material/IconButton";
 import BackspaceIcon from "@mui/icons-material/Backspace";
 import { useDispatch } from "react-redux";
 import { removeTodo, toggleTodoCompleted } from "../../store/todoSlice";
+import { Chip, Typography } from "@mui/material";
+import { Box } from "@mui/system";
 
-const TodoItem = ({ id, date, text, completed, todo }) => {
+const TodoItem = ({ id, date, text, completed }) => {
   const dispatch = useDispatch();
 
   return (
     <ListItem
-      sx={{
-        maxWidth: "600px",
-      }}
       secondaryAction={
         <IconButton edge="end" onClick={() => dispatch(removeTodo({ id }))}>
           <BackspaceIcon
@@ -28,13 +27,64 @@ const TodoItem = ({ id, date, text, completed, todo }) => {
       disablePadding
     >
       <ListItemButton
-        role={undefined}
         onClick={() => dispatch(toggleTodoCompleted({ id }))}
         dense
       >
         <Checkbox edge="start" checked={completed} />
-        <ListItemText primary={date} />
-        <ListItemText primary={text} />
+        <ListItemText
+          primary={
+            <Typography
+              sx={{
+                fontSize: 16,
+                opacity: 0.5,
+                textAlign: "left",
+              }}
+            >
+              {date}
+            </Typography>
+          }
+          secondary={
+            <Typography
+              sx={{
+                fontSize: 14,
+                opacity: 0.9,
+                textAlign: "justify",
+              }}
+            >
+              {text}
+            </Typography>
+          }
+        />
+        <Box
+          sx={{
+            display: "block",
+            minWidth: "80px",
+            mx: 1,
+          }}
+        >
+          {completed && (
+            <Chip
+              sx={{
+                width: "100%",
+                bgcolor: "#00a550",
+                color: "white",
+                fontSize: 12,
+              }}
+              label="Готово"
+            />
+          )}
+          {!completed && (
+            <Chip
+              sx={{
+                width: "100%",
+                bgcolor: "#ba66ff",
+                color: "white",
+                fontSize: 10,
+              }}
+              label="В процессе"
+            />
+          )}
+        </Box>
       </ListItemButton>
     </ListItem>
   );

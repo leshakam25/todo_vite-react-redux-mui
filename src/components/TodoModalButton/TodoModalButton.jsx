@@ -14,8 +14,9 @@ export default function TodoModalButton() {
       <Button
         sx={{
           color: { xs: "black", md: "white" },
+          my: 1,
         }}
-        variant="text"
+        variant="contained"
         size="small"
         onClick={handleOpen}
       >

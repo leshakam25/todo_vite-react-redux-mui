@@ -45,8 +45,8 @@ export default function TodoModalButton() {
             transform: "translate(-50%, -50%)",
             bgcolor: "#161925",
             boxShadow: 24,
-            p: 4,
-            borderRadius: "8px",
+            py: 4,
+            px: 2,
           }}
         >
           <TodoForm />

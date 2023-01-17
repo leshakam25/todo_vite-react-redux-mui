@@ -29,7 +29,7 @@ function App() {
       }}
     >
       <Header />
-      <Grid container sx={{ mt: 8 }}>
+      <Grid container sx={{ mt: { xs: 6, sm: 8 } }}>
         <Grid
           item
           xs={12}

@@ -3,6 +3,7 @@ import AddTaskIcon from "@mui/icons-material/AddTask";
 import { TextField, Button, Box, Typography } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { addTodo } from "../../../store/todoSlice";
+import Picker from "../../Global/DateTimePicker/Picker";
 
 const TodoForm = () => {
   const [date, setDate] = useState("");
@@ -16,40 +17,58 @@ const TodoForm = () => {
   };
   return (
     <>
-      <Typography>Добавление</Typography>
+      <Typography
+        fontFamily="Mulish"
+        fontWeight="700"
+        variant="h5"
+        color="#CBF7ED"
+      >
+        Добавление
+      </Typography>
       <Box
         sx={{
           display: "flex",
           flexDirection: "row",
-          gap: 0.2,
-          width: "100%",
+          gap: 1,
           my: 1,
+          bgcolor: "rgba(142, 168, 195,0.4)",
+          p: 2,
+          width: "100%",
+          ml: -2,
         }}
       >
-        <TextField
+        {/* <Picker
           value={date}
           onChange={(e) => {
             setDate(e.target.value);
           }}
+        /> */}
+        <TextField
+          color="warning"
+          variant="standard"
           size="small"
-          placeholder="Дата"
-          sx={{
-            width: 100,
+          value={date}
+          onChange={(e) => {
+            setDate(e.target.value);
           }}
+          label="Дата"
         />
         <TextField
+          color="warning"
+          variant="standard"
+          size="small"
           fullWidth
           value={text}
           onChange={(e) => {
             setText(e.target.value);
           }}
-          size="small"
-          placeholder="Что делаем?"
+          label="Что делаем?"
         />
         <Button
+          size="small"
           disabled={!text}
           variant="outlined"
-          color="secondary"
+          color="warning"
           onClick={addTask}
         >
           <AddTaskIcon />

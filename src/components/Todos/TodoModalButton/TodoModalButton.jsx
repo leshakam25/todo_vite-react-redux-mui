@@ -1,4 +1,4 @@
-import { Modal, Button, Box, Typography } from "@mui/material";
+import { Modal, Button, Box, Typography, IconButton } from "@mui/material";
 import React from "react";
 import TodoForm from "../TodoForm/TodoForm";
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
@@ -13,10 +13,10 @@ export default function TodoModalButton() {
     <div>
       <Button
         sx={{
-          color: { xs: "black", md: "white" },
           my: 1,
+          color: { xs: "black", md: "#CBF7ED" },
         }}
-        variant="contained"
+        variant="text"
         size="small"
         onClick={handleOpen}
       >
@@ -24,8 +24,8 @@ export default function TodoModalButton() {
         <Typography
           sx={{
             fontSize: 14,
+            fontFamily: "Mulish",
             fontWeight: 500,
-            display: { xs: "none", md: "block" },
           }}
         >
           &nbsp;Добавить дело
@@ -43,19 +43,23 @@ export default function TodoModalButton() {
             top: "50%",
             left: "50%",
             transform: "translate(-50%, -50%)",
-            bgcolor: "background.paper",
+            bgcolor: "#161925",
             boxShadow: 24,
             p: 4,
             borderRadius: "8px",
           }}
         >
           <TodoForm />
-          <Button
+          <IconButton
+            sx={{ position: "absolute", right: 8, top: 8 }}
             onClick={handleClose}
-            sx={{ position: "absolute", right: -14, top: 0 }}
           >
-            <CloseIcon />
-          </Button>
+            <CloseIcon
+              sx={{
+                color: "#CBF7ED",
+              }}
+            />
+          </IconButton>
         </Box>
       </Modal>
     </div>

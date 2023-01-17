@@ -20,61 +20,38 @@ const TodoItem = ({ id, date, text, completed, archieved }) => {
 
   return (
     <ListItem
+      sx={{
+        // bgcolor:  "#34A0A4",
+        my: 2,
+        borderRadius: "8px",
+      }}
       secondaryAction={
-        <ButtonGroup sx={{ m: 0 }}>
+        <ButtonGroup sx={{ m: 0 }} orientation="horizontal">
           <Button
             size="small"
             color={!completed ? "success" : "primary"}
-            variant="contained"
+            variant="text"
             onClick={() => dispatch(toggleTodoCompleted({ id }))}
           >
-            {!completed ? (
-              <RadioButtonUncheckedIcon
-                sx={{
-                  opacity: 0.8,
-                }}
-              />
-            ) : (
-              <TaskAltIcon
-                sx={{
-                  opacity: 0.8,
-                }}
-              />
-            )}
+            {!completed ? <RadioButtonUncheckedIcon /> : <TaskAltIcon />}
           </Button>
 
           <Button
             size="small"
             color={!archieved ? "success" : "primary"}
-            variant="contained"
+            variant="text"
             onClick={() => dispatch(toggleTodoArchieved({ id }))}
           >
-            {!archieved ? (
-              <ArrowDownwardIcon
-                sx={{
-                  opacity: 0.8,
-                }}
-              />
-            ) : (
-              <ArrowUpwardIcon
-                sx={{
-                  opacity: 0.8,
-                }}
-              />
-            )}
+            {!archieved ? <ArrowDownwardIcon /> : <ArrowUpwardIcon />}
           </Button>
 
           <Button
             color="error"
             size="small"
-            variant="outlined"
+            variant="text"
             onClick={() => dispatch(removeTodo({ id }))}
           >
-            <DeleteOutlineIcon
-              sx={{
-                opacity: 0.8,
-              }}
-            />
+            <DeleteOutlineIcon />
           </Button>
         </ButtonGroup>
       }
@@ -87,8 +64,8 @@ const TodoItem = ({ id, date, text, completed, archieved }) => {
       <ListItemText
         primary={
           <Typography
+            variant="body2"
             sx={{
-              fontSize: 16,
               opacity: 0.5,
               textAlign: "left",
             }}
@@ -98,11 +75,11 @@ const TodoItem = ({ id, date, text, completed, archieved }) => {
         }
         secondary={
           <Typography
+            variant="body1"
             component="div"
             sx={{
-              maxWidth: 440,
+              maxWidth: 392,
               p: 1,
-              bgcolor: "papayawhip",
               fontSize: 14,
               opacity: 0.9,
               textAlign: "justify",

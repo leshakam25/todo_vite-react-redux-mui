@@ -4,6 +4,7 @@ import { TextField, Button, Box, Typography } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { addTodo } from "../../../store/todoSlice";
 import Picker from "../../Global/DateTimePicker/Picker";
+import Title from "../../Global/Title/Title";
 
 const TodoForm = () => {
   const [date, setDate] = useState("");
@@ -17,14 +18,7 @@ const TodoForm = () => {
   };
   return (
     <>
-      <Typography
-        fontFamily="Mulish"
-        fontWeight="700"
-        variant="h5"
-        color="#CBF7ED"
-      >
-        Добавление
-      </Typography>
+      <Title text="Добавление" />
       <Box
         sx={{
           display: "flex",

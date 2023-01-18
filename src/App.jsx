@@ -4,14 +4,10 @@ import TodoForm from "./components/Todos/TodoForm/TodoForm";
 import TodoList from "./components/Todos/TodoList/TodoList";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTodos } from "./store/todoSlice";
-// import TodoModalButton from "./components/Todos/TodoModalButton/TodoModalButton";
 import loading from "./images/loading.svg";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
-import errorGif from "./images/errorGif.gif";
 import { Box } from "@mui/system";
 import Header from "./components/Header/Header";
-
-errorGif;
 
 function App() {
   const dispatch = useDispatch();
@@ -43,7 +39,6 @@ function App() {
             color: "#CBF7ED",
           }}
         >
-          {/* <TodoModalButton /> */}
           <TodoForm />
           <Box
             sx={{
@@ -52,20 +47,32 @@ function App() {
           >
             {status === "loading" && (
               <>
-                <Typography align="center" fontSize={24} fontWeight="bold">
-                  Стату загрузки: "{status}"
+                <Typography
+                  align="center"
+                  fontSize={24}
+                  fontWeight="bold"
+                  color="#06d6a0"
+                >
+                  Статус загрузки: <br />
+                  {status}
                 </Typography>
-                <CardMedia component="img" src={loading} />
+                <CardMedia component="img" src={loading} color="#06d6a0" />
               </>
             )}
             {error && (
               <Box>
-                <Typography align="center" fontSize={24} fontWeight="bold">
-                  Ошибка загрузки данных: "{error}"
+                <Typography
+                  align="center"
+                  fontSize={24}
+                  fontWeight="bold"
+                  color="#ef476f"
+                >
+                  Ошибка: <br /> {error}
                 </Typography>
                 {/* <CardMedia component="img" src={errorGif} /> */}
                 <ErrorOutlineIcon
                   sx={{
+                    color: "#ef476f",
                     width: "100%",
                     height: "100%",
                   }}
@@ -73,7 +80,7 @@ function App() {
               </Box>
             )}
           </Box>
-          <TodoList />
+          {status === "resolved" && <TodoList />}
         </Grid>
       </Grid>
     </Container>

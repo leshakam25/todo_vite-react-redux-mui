@@ -1,6 +1,7 @@
 import React from "react";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
+import ListItemButton from "@mui/material/ListItemButton";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
@@ -20,13 +21,16 @@ const TodoItem = ({ id, date, text, completed, archieved }) => {
 
   return (
     <ListItem
-      sx={{
-        // bgcolor:  "#34A0A4",
-        my: 2,
-        borderRadius: "8px",
-      }}
+      sx={{ minHeight: 140 }}
       secondaryAction={
-        <ButtonGroup sx={{ m: 0 }} orientation="horizontal">
+        <ButtonGroup
+          sx={{
+            bgcolor: "#161925",
+            opacity: 0.8,
+            display: "flex",
+            flexDirection: { xs: "column", sm: "row" },
+          }}
+        >
           <Button
             size="small"
             color={!completed ? "success" : "primary"}
@@ -57,46 +61,46 @@ const TodoItem = ({ id, date, text, completed, archieved }) => {
       }
       disablePadding
     >
-      {/* <ListItemButton
+      <ListItemButton
         onClick={() => dispatch(toggleTodoCompleted({ id }))}
         dense
-      > */}
-      <ListItemText
-        primary={
-          <Typography
-            variant="body2"
-            sx={{
-              opacity: 0.5,
-              textAlign: "left",
-            }}
-          >
-            {date}
-          </Typography>
-        }
-        secondary={
-          <Typography
-            variant="body1"
-            component="div"
-            sx={{
-              maxWidth: 392,
-              p: 1,
-              fontSize: 14,
-              opacity: 0.9,
-              textAlign: "justify",
-            }}
-          >
-            {text}
-          </Typography>
-        }
-      />
-      <Box
-        sx={{
-          display: "block",
-          minWidth: "80px",
-          mx: 1,
-        }}
-      ></Box>
-      {/* </ListItemButton> */}
+      >
+        <ListItemText
+          primary={
+            <Typography
+              sx={{
+                fontFamily: "Mulish",
+                lineHeight: "130%",
+                fontWeight: "400",
+                opacity: 0.5,
+                textAlign: "left",
+              }}
+            >
+              {date}
+            </Typography>
+          }
+          secondary={
+            <Typography
+              sx={{
+                fontSize: 14,
+                textAlign: "left",
+                lineHeight: "130%",
+                fontFamily: "Mulish",
+                fontWeight: "300",
+              }}
+            >
+              {text}
+            </Typography>
+          }
+        />
+        <Box
+          sx={{
+            display: "block",
+            minWidth: "80px",
+            mx: 1,
+          }}
+        ></Box>
+      </ListItemButton>
     </ListItem>
   );
 };

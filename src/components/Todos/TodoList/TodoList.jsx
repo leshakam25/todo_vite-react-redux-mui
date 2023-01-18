@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { Typography } from "@mui/material";
 import TodoItem from "../TodoItem/TodoItem";
 import { Box } from "@mui/system";
+import Title from "../../Global/Title/Title";
 
 export default function TodoList() {
   const todos = useSelector((state) => state.todos.todos);
@@ -13,23 +14,11 @@ export default function TodoList() {
       <List>
         <Box
           sx={{
-            ml: -2,
-            width: "110%",
             height: "3px",
             bgcolor: "#161925",
-            mt: 1,
           }}
-        ></Box>{" "}
-        <Typography
-          fontFamily="Mulish"
-          fontWeight="700"
-          variant="h5"
-          sx={{
-            mt: 2,
-          }}
-        >
-          Невыполненные
-        </Typography>
+        ></Box>
+        <Title text="Невыполненные" />
         {todos &&
           todos
             .filter((e) => e.completed === false && e.archieved === false)
@@ -38,25 +27,13 @@ export default function TodoList() {
             })}
         <Box
           sx={{
-            ml: -2,
-            width: "110%",
             height: "3px",
             bgcolor: "#161925",
           }}
         ></Box>
       </List>
-
       <List>
-        <Typography
-          fontFamily="Mulish"
-          fontWeight="700"
-          variant="h5"
-          sx={{
-            mt: 2,
-          }}
-        >
-          Выполненные
-        </Typography>
+        <Title text="Выполненные" />
         {todos &&
           todos
             .filter((e) => e.completed === true && e.archieved === false)
@@ -65,24 +42,13 @@ export default function TodoList() {
             })}
         <Box
           sx={{
-            ml: -2,
-            width: "110%",
             height: "3px",
             bgcolor: "#161925",
           }}
         ></Box>
       </List>
       <List>
-        <Typography
-          fontFamily="Mulish"
-          fontWeight="700"
-          variant="h5"
-          sx={{
-            mt: 2,
-          }}
-        >
-          Архив
-        </Typography>
+        <Title text="Архив" />
         {todos &&
           todos
             .filter((e) => e.archieved === true)

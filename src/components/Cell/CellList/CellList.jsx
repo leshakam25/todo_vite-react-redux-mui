@@ -1,13 +1,12 @@
 import React from "react";
 import List from "@mui/material/List";
 import { useSelector } from "react-redux";
-import { Typography } from "@mui/material";
-import TodoItem from "../TodoItem/TodoItem";
+import CellItem from "../CellItem/CellItem";
 import { Box } from "@mui/system";
 import Title from "../../Global/Title/Title";
 
-export default function TodoList() {
-  const todos = useSelector((state) => state.todos.todos);
+export default function CellList() {
+  const cell = useSelector((state) => state.cell.cell);
 
   return (
     <>
@@ -18,12 +17,12 @@ export default function TodoList() {
             bgcolor: "#161925",
           }}
         ></Box>
-        <Title text="Невыполненные" />
-        {todos &&
-          todos
+        <Title text="Невыполнено" />
+        {cell &&
+          cell
             .filter((e) => e.completed === false && e.archieved === false)
             .map((todo) => {
-              return <TodoItem key={todo.id} {...todo} />;
+              return <CellItem key={todo.id} {...todo} />;
             })}
         <Box
           sx={{
@@ -33,12 +32,12 @@ export default function TodoList() {
         ></Box>
       </List>
       <List>
-        <Title text="Выполненные" />
-        {todos &&
-          todos
+        <Title text="Выполнено" />
+        {cell &&
+          cell
             .filter((e) => e.completed === true && e.archieved === false)
             .map((todo) => {
-              return <TodoItem key={todo.id} {...todo} />;
+              return <CellItem key={todo.id} {...todo} />;
             })}
         <Box
           sx={{
@@ -49,11 +48,11 @@ export default function TodoList() {
       </List>
       <List>
         <Title text="Архив" />
-        {todos &&
-          todos
+        {cell &&
+          cell
             .filter((e) => e.archieved === true)
             .map((todo) => {
-              return <TodoItem key={todo.id} {...todo} />;
+              return <CellItem key={todo.id} {...todo} />;
             })}
       </List>
     </>

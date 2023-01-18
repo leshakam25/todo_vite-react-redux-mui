@@ -1,10 +1,10 @@
 import { Modal, Button, Box, Typography, IconButton } from "@mui/material";
 import React from "react";
-import TodoForm from "../TodoForm/TodoForm";
+import CellForm from "../CellForm/CellForm";
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 import CloseIcon from "@mui/icons-material/Close";
 
-export default function TodoModalButton() {
+export default function CellFormModalButton() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -28,7 +28,7 @@ export default function TodoModalButton() {
             fontWeight: 500,
           }}
         >
-          &nbsp;Добавить дело
+          &nbsp;Добавить
         </Typography>
       </Button>
       <Modal
@@ -49,7 +49,7 @@ export default function TodoModalButton() {
             px: 2,
           }}
         >
-          <TodoForm />
+          <CellForm />
           <IconButton
             sx={{ position: "absolute", right: 8, top: 8 }}
             onClick={handleClose}

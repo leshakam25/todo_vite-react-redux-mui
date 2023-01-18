@@ -9,33 +9,30 @@ import TaskAltIcon from "@mui/icons-material/TaskAlt";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import { useDispatch } from "react-redux";
 import {
-  removeTodo,
-  toggleTodoArchieved,
-  toggleTodoCompleted,
-} from "../../../store/todoSlice";
+  removeCell,
+  toggleCellArchieved,
+  toggleCellCompleted,
+} from "../../../store/cellSlice";
 import { Button, ButtonGroup, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 
-const TodoItem = ({ id, date, text, completed, archieved }) => {
+const CellItem = ({ id, date, text, completed, archieved }) => {
   const dispatch = useDispatch();
 
   return (
     <ListItem
-      sx={{ minHeight: 140 }}
       secondaryAction={
         <ButtonGroup
           sx={{
             bgcolor: "#161925",
             opacity: 0.8,
-            display: "flex",
-            flexDirection: { xs: "column", sm: "row" },
           }}
         >
           <Button
             size="small"
             color={!completed ? "success" : "primary"}
             variant="text"
-            onClick={() => dispatch(toggleTodoCompleted({ id }))}
+            onClick={() => dispatch(toggleCellCompleted({ id }))}
           >
             {!completed ? <RadioButtonUncheckedIcon /> : <TaskAltIcon />}
           </Button>
@@ -44,7 +41,7 @@ const TodoItem = ({ id, date, text, completed, archieved }) => {
             size="small"
             color={!archieved ? "success" : "primary"}
             variant="text"
-            onClick={() => dispatch(toggleTodoArchieved({ id }))}
+            onClick={() => dispatch(toggleCellArchieved({ id }))}
           >
             {!archieved ? <ArrowDownwardIcon /> : <ArrowUpwardIcon />}
           </Button>
@@ -53,7 +50,7 @@ const TodoItem = ({ id, date, text, completed, archieved }) => {
             color="error"
             size="small"
             variant="text"
-            onClick={() => dispatch(removeTodo({ id }))}
+            onClick={() => dispatch(removeCell({ id }))}
           >
             <DeleteOutlineIcon />
           </Button>
@@ -74,6 +71,7 @@ const TodoItem = ({ id, date, text, completed, archieved }) => {
                 fontWeight: "400",
                 opacity: 0.5,
                 textAlign: "left",
+                fontSize: 16,
               }}
             >
               {date}
@@ -105,4 +103,4 @@ const TodoItem = ({ id, date, text, completed, archieved }) => {
   );
 };
 
-export default TodoItem;
+export default CellItem;

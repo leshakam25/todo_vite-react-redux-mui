@@ -5,7 +5,7 @@ const Title = ({ text }) => {
   return (
     <Typography
       fontFamily="Mulish"
-      fontWeight="700"
+      fontWeight="500"
       color="#CBF7ED"
       fontSize={{
         xs: 14,

@@ -10,9 +10,10 @@ import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import TodoModalButton from "../Todos/TodoModalButton/TodoModalButton";
+import CellFormModalButton from "../Cell/CellFormModalButton/CellFormModalButton";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
 
-const pages = [<TodoModalButton />];
+const pages = [<CellFormModalButton />];
 const settings = ["Профиль", "Мои списки", "Настройки", "Выход"];
 
 function Header() {
@@ -39,7 +40,6 @@ function Header() {
       <Container maxWidth={false} sx={{ bgcolor: "rgba(22, 25, 37)" }}>
         <Toolbar disableGutters>
           <Typography
-            variant="h6"
             noWrap
             component="a"
             href="/"
@@ -109,10 +109,24 @@ function Header() {
             SHMELLO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            <TodoModalButton />
+            {pages.map((page) => (
+              <Box key={page}>{page}</Box>
+            ))}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
+            <Tooltip title="Цветовая тема">
+              <IconButton sx={{ p: 0 }}>
+                <DarkModeIcon
+                  sx={{
+                    p: 1,
+                    color: "#CBF7ED",
+                    bgcolor: "#23395B",
+                    borderRadius: "50%",
+                  }}
+                />
+              </IconButton>
+            </Tooltip>{" "}
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="" />

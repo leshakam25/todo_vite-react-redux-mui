@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import todoReducer from "./todoSlice";
+import cellSlice from "./cellSlice";
+import styleReducer from "./styleSlice";
 
 export default configureStore({
   reducer: {
-    todos: todoReducer,
+    cell: cellSlice,
+    style: styleReducer,
   },
 });

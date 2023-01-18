@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import AddTaskIcon from "@mui/icons-material/AddTask";
 import { TextField, Button, Box, Typography } from "@mui/material";
 import { useDispatch } from "react-redux";
-import { addTodo } from "../../../store/todoSlice";
+import { addTodo } from "../../../store/cellSlice";
 import Picker from "../../Global/DateTimePicker/Picker";
 import Title from "../../Global/Title/Title";
 
-const TodoForm = () => {
+const CustomForm = () => {
   const [date, setDate] = useState("");
   const [text, setText] = useState("");
 
@@ -72,4 +72,4 @@ const TodoForm = () => {
   );
 };
 
-export default TodoForm;
+export default CustomForm;

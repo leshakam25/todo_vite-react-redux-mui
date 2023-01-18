@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import App from "./App";
 import "normalize.css";
 import store from "./store";
+import "./main.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

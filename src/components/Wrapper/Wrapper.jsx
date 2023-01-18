@@ -29,7 +29,8 @@ function Wrapper() {
         <Grid
           item
           xs={12}
-          sm={6}
+          sm={8}
+          md={6}
           lg={4}
           sx={{
             background: "rgba(35, 57, 91)",
@@ -48,28 +49,35 @@ function Wrapper() {
             {status === "loading" && (
               <>
                 <Typography
-                  align="center"
-                  fontSize={24}
-                  fontWeight="bold"
-                  color="#06d6a0"
+                  sx={{
+                    align: "center",
+                    fontSize: "24",
+                    fontWeight: "bold",
+                    color: "#06d6a0",
+                  }}
                 >
                   Статус загрузки: <br />
                   {status}
                 </Typography>
-                <CardMedia component="img" src={loading} color="#06d6a0" />
+                <CardMedia
+                  component="img"
+                  src={loading}
+                  sx={{ color: "#06d6a0" }}
+                />
               </>
             )}
             {error && (
               <Box>
                 <Typography
-                  align="center"
-                  fontSize={24}
-                  fontWeight="bold"
-                  color="#ef476f"
+                  sx={{
+                    align: "center",
+                    fontSize: "24",
+                    fontWeight: 700,
+                    color: "#ef476f",
+                  }}
                 >
                   Ошибка: <br /> {error}
                 </Typography>
-                {/* <CardMedia component="img" src={errorGif} /> */}
                 <ErrorOutlineIcon
                   sx={{
                     color: "#ef476f",

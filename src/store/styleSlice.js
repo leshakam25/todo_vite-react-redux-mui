@@ -4,13 +4,32 @@ const styleSlice = createSlice({
   name: "style",
   initialState: {
     style: {
+      pallete: {
+        dark: {
+          main: "#161925",
+          primary: "#23395B",
+          secondary: "#406E8E",
+          form: "#8EA8C3",
+          text: "#CBF7ED",
+        },
+      },
       fonts: {
         logo: {
           fontFamily: "Architects Daughter",
           fontSize: 32,
-          color: "white",
+          display: { xs: "none", md: "flex" },
+          color: "#CBF7ED",
           textDecoration: "none",
           mr: 2,
+        },
+        logoMobile: {
+          fontFamily: "Architects Daughter",
+          fontSize: 24,
+          display: { xs: "flex", md: "none" },
+          color: "#CBF7ED",
+          textDecoration: "none",
+          mr: 2,
+          flexGrow: 1,
         },
         main: { font: "Mulish", color: "#CBF7ED" },
         title: {
@@ -51,6 +70,58 @@ const styleSlice = createSlice({
         },
         form: {
           dark: "#8EA8C3",
+        },
+      },
+      header: {
+        openMenu: {
+          fontFamily: "Mulish",
+          fontWeight: "300",
+          textAlign: "center",
+          color: "#CBF7ED",
+          background: "#8EA8C3",
+        },
+      },
+      form: {
+        main: {
+          display: "flex",
+          flexDirection: "row",
+          gap: 1,
+          my: 1,
+          bgcolor: "rgba(142, 168, 195,0.4)",
+          p: 2,
+          width: "100%",
+          ml: -2,
+        },
+      },
+      cell: {
+        background: "rgba(35, 57, 91)",
+        p: 2,
+        m: "0 auto",
+        my: 2,
+        color: "#CBF7ED",
+      },
+      statuses: {
+        loading: {
+          text: {
+            align: "center",
+            fontSize: "24",
+            fontWeight: "bold",
+            color: "#06d6a0",
+          },
+          animation: { color: "#06d6a0" },
+        },
+        error: {
+          text: {
+            align: "center",
+            fontSize: "24",
+            fontWeight: "bold",
+            color: "#ef476f",
+          },
+          logo: {
+            color: "#ef476f",
+            width: "100%",
+            height: "100%",
+          },
         },
       },
     },

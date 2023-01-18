@@ -12,11 +12,15 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import CellFormModalButton from "../Cell/CellFormModalButton/CellFormModalButton";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
+import { useSelector } from "react-redux";
+import { Button } from "@mui/material";
 
 const pages = [<CellFormModalButton />];
 const settings = ["Профиль", "Мои списки", "Настройки", "Выход"];
 
 function Header() {
+  const style = useSelector((state) => state.style.style);
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -35,23 +39,15 @@ function Header() {
     setAnchorElUser(null);
   };
 
+  React.useEffect(() => {
+    console.log(style);
+  }, []);
+
   return (
     <AppBar position="fixed">
       <Container maxWidth={false} sx={{ bgcolor: "rgba(22, 25, 37)" }}>
         <Toolbar disableGutters>
-          <Typography
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "Architects Daughter",
-              color: "inherit",
-              textDecoration: "none",
-              fontSize: 32,
-            }}
-          >
+          <Typography noWrap component="a" href="/" sx={style.fonts.logo}>
             SHMELLO
           </Typography>
 
@@ -96,15 +92,7 @@ function Header() {
             noWrap
             component="a"
             href=""
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "Architects Daughter",
-              color: "inherit",
-              textDecoration: "none",
-              fontSize: 24,
-            }}
+            sx={style.fonts.logoMobile}
           >
             SHMELLO
           </Typography>
@@ -120,20 +108,23 @@ function Header() {
                 <DarkModeIcon
                   sx={{
                     p: 1,
-                    color: "#CBF7ED",
-                    bgcolor: "#23395B",
+                    color: style.fonts.main.color,
+                    bgcolor: style.background.cell.dark,
                     borderRadius: "50%",
                   }}
                 />
               </IconButton>
-            </Tooltip>{" "}
+            </Tooltip>
             <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="" />
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0, pl: 2 }}>
+                <Avatar
+                  alt="Remy Sharp"
+                  src="https://sun9-80.userapi.com/s/v1/ig2/p5rxj4wWBO8pbC8xVOnETctryU-ybfjCCCqMaJ_-SZkXEQ7TZGeHOlpe_qNwYnTZaDUAr-HozgWZDa8q2ny9Zsuj.jpg?size=271x271&quality=96&crop=34,34,271,271&ava=1"
+                />
               </IconButton>
             </Tooltip>
             <Menu
-              sx={{ mt: "45px" }}
+              sx={{ mt: 8 }}
               id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{
@@ -149,14 +140,12 @@ function Header() {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography
-                    fontFamily="Mulish"
-                    fontWeight="300"
-                    textAlign="center"
-                  >
-                    {setting}
-                  </Typography>
+                <MenuItem
+                  sx={style.header.openMenu}
+                  key={setting}
+                  onClick={handleCloseUserMenu}
+                >
+                  <Typography>{setting}</Typography>
                 </MenuItem>
               ))}
             </Menu>

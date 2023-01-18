@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import AddTaskIcon from "@mui/icons-material/AddTask";
 import { TextField, Button, Box, Typography } from "@mui/material";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addCell } from "../../../store/cellSlice";
 // import Picker from "../../Global/DateTimePicker/Picker";
 import Title from "../../Global/Title/Title";
@@ -9,6 +9,7 @@ import Title from "../../Global/Title/Title";
 const CellForm = () => {
   const [date, setDate] = useState("");
   const [text, setText] = useState("");
+  const style = useSelector((state) => state.style.style);
 
   const dispatch = useDispatch();
   const addTask = () => {

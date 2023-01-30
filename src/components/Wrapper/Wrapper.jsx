@@ -21,7 +21,6 @@ function Wrapper() {
       <Header />
       <Grid container>
         <Grid margin="0 auto" item xs={12} sm={8} md={6} lg={4}>
-          <CellForm />
           <Box
             sx={{
               width: "100%",

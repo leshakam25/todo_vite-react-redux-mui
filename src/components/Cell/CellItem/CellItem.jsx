@@ -22,12 +22,7 @@ const CellItem = ({ id, date, text, completed, archieved }) => {
   return (
     <ListItem
       secondaryAction={
-        <ButtonGroup
-          sx={{
-            bgcolor: "#161925",
-            opacity: 0.8,
-          }}
-        >
+        <ButtonGroup>
           <Button
             size="small"
             color={!completed ? "success" : "primary"}
@@ -63,33 +58,8 @@ const CellItem = ({ id, date, text, completed, archieved }) => {
         dense
       >
         <ListItemText
-          primary={
-            <Typography
-              sx={{
-                fontFamily: "Mulish",
-                lineHeight: "130%",
-                fontWeight: "400",
-                opacity: 0.5,
-                textAlign: "left",
-                fontSize: 16,
-              }}
-            >
-              {date}
-            </Typography>
-          }
-          secondary={
-            <Typography
-              sx={{
-                fontSize: 14,
-                textAlign: "left",
-                lineHeight: "130%",
-                fontFamily: "Mulish",
-                fontWeight: "300",
-              }}
-            >
-              {text}
-            </Typography>
-          }
+          primary={<Typography variant="body1">{date}</Typography>}
+          secondary={<Typography variant="body2">{text}</Typography>}
         />
         <Box
           sx={{

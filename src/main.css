@@ -6,3 +6,9 @@
    background-color: #2F354E;
 }
  
+@font-face {
+   font-family: 'Motel King';
+   src: local('Motel King'), url(./fonts/MotelKing.ttf) format('truetype');
+   /* other formats include: 'woff2', 'truetype, 'opentype',
+                             'embedded-opentype', and 'svg' */
+ }

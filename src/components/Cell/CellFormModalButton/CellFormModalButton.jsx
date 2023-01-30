@@ -1,4 +1,11 @@
-import { Modal, Button, Box, Typography, IconButton } from "@mui/material";
+import {
+  Modal,
+  Button,
+  Box,
+  Typography,
+  IconButton,
+  Paper,
+} from "@mui/material";
 import React from "react";
 import CellForm from "../CellForm/CellForm";
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
@@ -10,26 +17,9 @@ export default function CellFormModalButton() {
   const handleClose = () => setOpen(false);
 
   return (
-    <div>
-      <Button
-        sx={{
-          my: 1,
-          color: { xs: "black", md: "#CBF7ED" },
-        }}
-        variant="text"
-        size="small"
-        onClick={handleOpen}
-      >
-        <PlaylistAddIcon />{" "}
-        <Typography
-          sx={{
-            fontSize: 14,
-            fontFamily: "Mulish",
-            fontWeight: 500,
-          }}
-        >
-          &nbsp;Добавить
-        </Typography>
+    <>
+      <Button color="inherit" size="small" onClick={handleOpen}>
+        <PlaylistAddIcon /> <Typography>&nbsp;Добавить</Typography>
       </Button>
       <Modal
         open={open}
@@ -43,7 +33,6 @@ export default function CellFormModalButton() {
             top: "50%",
             left: "50%",
             transform: "translate(-50%, -50%)",
-            bgcolor: "#161925",
             boxShadow: 24,
             py: 4,
             px: 2,
@@ -54,14 +43,10 @@ export default function CellFormModalButton() {
             sx={{ position: "absolute", right: 8, top: 8 }}
             onClick={handleClose}
           >
-            <CloseIcon
-              sx={{
-                color: "#CBF7ED",
-              }}
-            />
+            <CloseIcon />
           </IconButton>
         </Box>
       </Modal>
-    </div>
+    </>
   );
 }

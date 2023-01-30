@@ -5,11 +5,19 @@ import App from "./App";
 import "normalize.css";
 import store from "./store";
 import "./main.css";
+import {
+  createTheme,
+  ThemeProvider,
+  responsiveFontSizes,
+} from "@mui/material/styles";
+import { theme } from "./theme";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <ThemeProvider theme={responsiveFontSizes(createTheme(theme))}>
+        <App />
+      </ThemeProvider>
     </Provider>
   </React.StrictMode>
 );

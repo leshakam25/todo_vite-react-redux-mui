@@ -27,6 +27,7 @@ const CellForm = () => {
             sx={{
               display: "flex",
               flexDirection: "row",
+              width: "100%",
             }}
           >
             <TextField
